@@ -15,7 +15,7 @@ function App() {
       </div>
 
       <div className="main-content">
-        <div>TASKMO</div>
+        
       </div>
     </div>
   );
