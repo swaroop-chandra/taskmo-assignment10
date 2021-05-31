@@ -15,7 +15,20 @@ function App() {
       </div>
 
       <div className="main-content">
-        
+        <div className="form-container">
+          <div>
+            {/* <div>Project Name</div>
+            <div><input/></div> */}
+          </div>
+        </div>
+        <div className="right-content">
+          <div className="remark">
+              <div className="remarkIcon">{/*<img src={window.location.origin+"/images/remarkIcon.svg"} alt="remark"/> */}</div>
+          </div>
+          <div>
+
+          </div>
+        </div>
       </div>
     </div>
   );
