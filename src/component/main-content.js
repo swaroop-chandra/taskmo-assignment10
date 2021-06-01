@@ -50,12 +50,16 @@ export default function MainContent() {
             </div>
             <div className="inputContainer">
               <div>Mobile</div>
-              <div>
+              <div className="inputAndYesNo">
                 <input
                   className="myInputField invalidInput"
                   disabled
                   value={`7879872341`}
                 />
+                <div className="yesNo">
+                    <div className="btn">NO</div>
+                    <div className="btn">YES</div>
+                </div>
               </div>
               <div className="invalidInputText">
                 Email ID not verified. Please verify again!
@@ -63,33 +67,43 @@ export default function MainContent() {
             </div>
             <div className="inputContainer">
               <div>Email</div>
-              <div>
+              <div className="inputAndYesNo">
                 <input
                   className="myInputField invalidInput"
                   disabled
                   value={`rahul420@gmail.com`}
                 />
+                <div className="yesNo">
+                    <div className="btn">NO</div>
+                    <div className="btn yesBtn">YES</div>
+                </div>
               </div>
+              
               <div className="invalidInputText">
                 Email ID not verified. Please verify again!
               </div>
             </div>
             <div className="inputContainer">
               <div>Email</div>
-              <div>
+              <div className="inputAndYesNo">
                 <input
                   className="myInputField invalidInput"
                   disabled
                   value={`rahul420@gmail.com`}
                 />
+                <div className="yesNo">
+                    <div className="btn noBtn">NO</div>
+                    <div className="btn">YES</div>
+                </div>
               </div>
+              
               <div className="invalidInputText">
                 Email ID not verified. Please verify again!
               </div>
             </div>
           </div>
         </div>
-        <div className="right-content">
+        <div className="right-content"> 
           <div className="remark">
             <div className="remarkIcon">
               {/*<img src={window.location.origin+"/images/remarkIcon.svg"} alt="remark"/> */}
