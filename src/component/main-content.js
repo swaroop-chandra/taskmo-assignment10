@@ -130,8 +130,8 @@ export default function MainContent() {
           </div>
           <div className="qcScore">
             <div className="qcScoreText">QC Score</div>
-            <div className="pieStyle">
-              <div className="card_body12">
+            <div className="donutStyle">
+              
                 
                   <Chart
                     options={optionsPie.options}
@@ -140,7 +140,7 @@ export default function MainContent() {
                     width="150px"
                   />
                 
-              </div>
+              
             </div>
             <div className="redoText">REDO</div>
           </div>

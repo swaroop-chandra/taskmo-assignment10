@@ -78,7 +78,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .form-container {
@@ -94,13 +94,13 @@
 }
 .back-arrow {
   background-color: black;
-  height: 50px;
-  width: 44px;
+  height: 37px;
+  width: 32px;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .form-content {
   margin: 20px;
@@ -114,7 +114,7 @@
   min-width: 0;
   overflow: overlay;
 }
-form::-webkit-scrollbar{
+form::-webkit-scrollbar {
   width: 1em;
   border-radius: 20px;
 }
@@ -203,24 +203,21 @@ form::-webkit-scrollbar{
 }
 .remark {
   background: #fbfbfb;
-  /* Low Contrast Gray */
-
   border: 1px solid rgba(29, 28, 29, 0.13);
   border-radius: 16px;
   padding: 20px;
   overflow: overlay;
+  width: 15.5vw;
 }
-.remark::-webkit-scrollbar{
+.remark::-webkit-scrollbar {
   width: 1em;
   border-radius: 1px;
 }
 .qcScore {
-  background: #fbfbfb;
-  /* Low Contrast Gray */
-
-  border: 1px solid rgba(29, 28, 29, 0.13);
-  border-radius: 16px 16px 0px 0px;
-  
+  background: white;
+    border: 1px solid rgba(29, 28, 29, 0.13);
+    border-radius: 16px 16px 0px 0px;
+    width: 18vw;
 }
 .qcContent {
   padding: 20px 40px;
@@ -249,29 +246,35 @@ form::-webkit-scrollbar{
   align-items: center;
   margin: 10px 0px -20px 18px;
 }
-.qcScoreText{
+.qcScoreText {
   font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 22px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 20px 0px 10px 20px;
 
-/* 1) Theme Color / Heading & Display - Text */
+  /* 1) Theme Color / Heading & Display - Text */
 
-color: #5E5873;
+  color: #5e5873;
 }
 
-.redoText{
+.redoText {
   font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 40px;
-line-height: 49px;
-/* identical to box height */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 49px;
+  /* identical to box height */
 
-text-align: center;
+  text-align: center;
 
-color: #565656;
-background: #EBEBEB;
-padding: 25px 50px;
+  color: #565656;
+  background: #ebebeb;
+  /* padding: 25px 50px; */
+}
+.donutStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
