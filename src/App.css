@@ -86,13 +86,13 @@
 }
 .back-arrow {
   background-color: black;
-  height: 40px;
-  width: 40px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+    height: 50px;
+    width: 44px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 .form-content {
   margin: 20px;
@@ -116,7 +116,7 @@
 .panCardContainer {
   margin-top: 5px;
   height: 125px;
-  width: 32vw;
+  width: 31.5vw;
   display: flex;
   background: #f7f8fc;
   border: 1px dashed #5961f9;
@@ -139,4 +139,11 @@
   line-height: 20px;
   /* text-align: center; */
   color: #005eff;
+}
+
+.inputContainer{
+  margin-top: 10px;
+}
+.backArrowImg{
+  height: 14px;
 }
