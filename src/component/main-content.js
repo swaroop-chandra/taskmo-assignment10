@@ -106,10 +106,23 @@ export default function MainContent() {
         <div className="right-content"> 
           <div className="remark">
             <div className="remarkIcon">
-              {/*<img src={window.location.origin+"/images/remarkIcon.svg"} alt="remark"/> */}
+              <img src={window.location.origin+"/images/remarkIcon.svg"} alt="remark"/>
+              <div>Remark</div>
+            </div>
+            <div>
+                <div className="qcStyle">QC01</div>
+                <div className="qcContent invalidInputText">Email ID is incorrect</div>
+            </div>
+            <div>
+                <div className="qcStyle">QC02</div>
+                <div className="qcContent invalidInputText">Email ID is incorrect</div>
             </div>
           </div>
-          <div></div>
+          <div className="qcScore">
+              <div className="qcScoreText">QC Score</div>
+              <div>Graph</div>
+              <div className="redoText">REDO</div>
+          </div>
         </div>
       </div>
     </>
