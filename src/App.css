@@ -83,21 +83,20 @@
   width: 49vw;
   display: flex;
   flex-direction: column;
-  
 }
-.back-arrow{
+.back-arrow {
   background-color: black;
-  height:40px;
-  width:40px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
-.form-content{
-  margin:20px;
+.form-content {
+  margin: 20px;
 }
-.form{
+.form {
   margin: 10px 0px 10px 0px;
   font-family: Inter;
   font-size: 12px;
@@ -105,14 +104,22 @@
   flex-direction: column;
   height: 73vh;
   justify-content: space-evenly;
-
 }
-.myInputField{
-  width:30vw;
+.myInputField {
+  margin-top: 5px;
+  width: 30vw;
 }
-.panCardContainer{
-  height: 125px;
+.panCardContainer {
+  margin-top: 5px;
+    height: 125px;
     width: 30.5vw;
-  background: #F7F8FC;
-border: 1px dashed #5961F9;
+    display: flex;
+    background: #f7f8fc;
+    border: 1px dashed #5961f9;
+    justify-content: center;
+    align-items: center;
+}
+.panImg{
+  height:10vw;
+  width:20vw;
 }

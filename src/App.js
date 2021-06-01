@@ -46,6 +46,7 @@ function App() {
                 <div>Pan Card</div>
                 <div className="panCardContainer">
                   {/* <input className="myInputField" disabled /> */}
+                  <img src={window.location.origin+"/images/panCard.svg"} alt="pan-card" className="panImg"/>
                 </div>
               </div>
               <div>
