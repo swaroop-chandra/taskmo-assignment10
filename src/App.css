@@ -54,7 +54,7 @@
 }
 
 .main-content {
-  position: relative;
+  position: absolute;
   left: 21.88%;
   right: 2.45%;
   top: 3.15%;
@@ -76,22 +76,23 @@
 .form-container {
   background: #ffffff;
   border: 1px solid #cacaca;
-  height: 91vh;
   border-radius: 30px;
   margin-left: 1vw;
   width: 49vw;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  height: 84vh;
 }
 .back-arrow {
   background-color: black;
   height: 40px;
   width: 40px;
-  border-radius: 50%;
+  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .form-content {
   margin: 20px;
