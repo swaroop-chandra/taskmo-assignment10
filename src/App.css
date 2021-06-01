@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 .App {
   font-family: Poppins;
   background-color: black;
@@ -76,8 +77,42 @@
 .form-container {
   background: #ffffff;
   border: 1px solid #cacaca;
-  height: 89vh;
+  /* height: 89vh; */
   border-radius: 30px;
   margin-left: 1vw;
   width: 49vw;
+  display: flex;
+  flex-direction: column;
+  
+}
+.back-arrow{
+  background-color: black;
+  height:40px;
+  width:40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.form-content{
+  margin:20px;
+}
+.form{
+  margin: 10px 0px 10px 0px;
+  font-family: Inter;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 73vh;
+  justify-content: space-evenly;
+
+}
+.myInputField{
+  width:30vw;
+}
+.panCardContainer{
+  height: 125px;
+    width: 30.5vw;
+  background: #F7F8FC;
+border: 1px dashed #5961F9;
 }
