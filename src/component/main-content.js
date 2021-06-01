@@ -1,3 +1,6 @@
+import { optionsPie } from "../dataset/chartDataset";
+import Chart from "react-apexcharts";
+
 export default function MainContent() {
   return (
     <>
@@ -57,8 +60,8 @@ export default function MainContent() {
                   value={`7879872341`}
                 />
                 <div className="yesNo">
-                    <div className="btn">NO</div>
-                    <div className="btn">YES</div>
+                  <div className="btn">NO</div>
+                  <div className="btn">YES</div>
                 </div>
               </div>
               <div className="invalidInputText">
@@ -74,11 +77,11 @@ export default function MainContent() {
                   value={`rahul420@gmail.com`}
                 />
                 <div className="yesNo">
-                    <div className="btn">NO</div>
-                    <div className="btn yesBtn">YES</div>
+                  <div className="btn">NO</div>
+                  <div className="btn yesBtn">YES</div>
                 </div>
               </div>
-              
+
               <div className="invalidInputText">
                 Email ID not verified. Please verify again!
               </div>
@@ -92,36 +95,54 @@ export default function MainContent() {
                   value={`rahul420@gmail.com`}
                 />
                 <div className="yesNo">
-                    <div className="btn noBtn">NO</div>
-                    <div className="btn">YES</div>
+                  <div className="btn noBtn">NO</div>
+                  <div className="btn">YES</div>
                 </div>
               </div>
-              
+
               <div className="invalidInputText">
                 Email ID not verified. Please verify again!
               </div>
             </div>
           </div>
         </div>
-        <div className="right-content"> 
+        <div className="right-content">
           <div className="remark">
             <div className="remarkIcon">
-              <img src={window.location.origin+"/images/remarkIcon.svg"} alt="remark"/>
+              <img
+                src={window.location.origin + "/images/remarkIcon.svg"}
+                alt="remark"
+              />
               <div>Remark</div>
             </div>
             <div>
-                <div className="qcStyle">QC01</div>
-                <div className="qcContent invalidInputText">Email ID is incorrect</div>
+              <div className="qcStyle">QC01</div>
+              <div className="qcContent invalidInputText">
+                Email ID is incorrect
+              </div>
             </div>
             <div>
-                <div className="qcStyle">QC02</div>
-                <div className="qcContent invalidInputText">Email ID is incorrect</div>
+              <div className="qcStyle">QC02</div>
+              <div className="qcContent invalidInputText">
+                Email ID is incorrect
+              </div>
             </div>
           </div>
           <div className="qcScore">
-              <div className="qcScoreText">QC Score</div>
-              <div>Graph</div>
-              <div className="redoText">REDO</div>
+            <div className="qcScoreText">QC Score</div>
+            <div className="pieStyle">
+              <div className="card_body12">
+                
+                  <Chart
+                    options={optionsPie.options}
+                    series={optionsPie.series}
+                    type="donut"
+                    width="150px"
+                  />
+                
+              </div>
+            </div>
+            <div className="redoText">REDO</div>
           </div>
         </div>
       </div>
