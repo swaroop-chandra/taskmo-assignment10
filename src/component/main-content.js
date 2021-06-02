@@ -6,7 +6,7 @@ export default function MainContent() {
     <>
       <div className="main-content">
         <div className="form-container">
-          <div className="back-arrow">
+          <div className="backArrow">
             <img
               src={window.location.origin + "/images/backArrow.svg"}
               alt="back-arrow"
