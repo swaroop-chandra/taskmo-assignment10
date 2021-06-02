@@ -65,6 +65,8 @@ export default function MainContent() {
                 </div>
               </div>
               <div className="invalidInputText">
+              <img src={window.location.origin+"/images/warningIcon.svg"} alt="warning icon" className="warningIcon"/>
+
                 Email ID not verified. Please verify again!
               </div>
             </div>
@@ -83,6 +85,8 @@ export default function MainContent() {
               </div>
 
               <div className="invalidInputText">
+              <img src={window.location.origin+"/images/warningIcon.svg"} alt="warning icon" className="warningIcon"/>
+
                 Email ID not verified. Please verify again!
               </div>
             </div>
@@ -101,6 +105,8 @@ export default function MainContent() {
               </div>
 
               <div className="invalidInputText">
+              <img src={window.location.origin+"/images/warningIcon.svg"} alt="warning icon" className="warningIcon"/>
+
                 Email ID not verified. Please verify again!
               </div>
             </div>
