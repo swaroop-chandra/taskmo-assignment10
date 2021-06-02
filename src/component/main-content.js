@@ -131,13 +131,14 @@ export default function MainContent() {
           <div className="qcScore">
             <div className="qcScoreText">QC Score</div>
             <div className="donutStyle">
-              
+              <div className="donutLegend">80%</div>
                 
                   <Chart
                     options={optionsPie.options}
                     series={optionsPie.series}
                     type="donut"
-                    width="150px"
+                    width="200px"
+                    
                   />
                 
               

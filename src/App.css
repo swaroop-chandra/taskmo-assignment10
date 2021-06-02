@@ -215,9 +215,9 @@ form::-webkit-scrollbar {
 }
 .qcScore {
   background: white;
-    border: 1px solid rgba(29, 28, 29, 0.13);
-    border-radius: 16px 16px 0px 0px;
-    width: 18vw;
+  border: 1px solid rgba(29, 28, 29, 0.13);
+  border-radius: 16px 16px 0px 0px;
+  width: 18vw;
 }
 .qcContent {
   padding: 20px 40px;
@@ -229,22 +229,19 @@ form::-webkit-scrollbar {
 .qcStyle {
   background: #005eff;
   border-radius: 15px;
-  height: 42px;
-  width: 131px;
+  height: 30px;
+  width: 80px;
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 30px;
-  /* identical to box height, or 167% */
-
   display: flex;
   align-items: center;
-
   color: #ffffff;
   justify-content: center;
   align-items: center;
-  margin: 10px 0px -20px 18px;
+  margin: 10px 0px -10px 18px;
 }
 .qcScoreText {
   font-family: Montserrat;
@@ -277,4 +274,9 @@ form::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.donutLegend{
+  margin: 57px 0px -83px 0px;
+  z-index: 1;
 }
