@@ -92,6 +92,7 @@ const optionsPie={
         enabled: false,
       },
       colors: ["#00B712","#FFFFFF"],
+      
     //   fill: {
     //     type: "gradient",
     //   },
