@@ -150,8 +150,8 @@ export default function MainContent({blur}) {
                 
               
             </div>
-            {/* <QcscoreComp2/> */}
-            {/* <div className="redoText">REDO</div> */}
+            <QcscoreComp2/>
+            <div className="redoText">REDO</div>
           </div>
         </div>
       </div>
