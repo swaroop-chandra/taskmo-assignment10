@@ -2,10 +2,10 @@ import { optionsPie } from "../dataset/chartDataset";
 import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 
-export default function MainContent() {
+export default function MainContent({blur}) {
   return (
     <>
-      <div className="main-content">
+      <div className={`main-content ${blur?"myBlur":null}`}>
         <div className="form-container">
           <div className="backArrow">
             <img
@@ -150,7 +150,7 @@ export default function MainContent() {
                 
               
             </div>
-            <QcscoreComp2/>
+            {/* <QcscoreComp2/> */}
             {/* <div className="redoText">REDO</div> */}
           </div>
         </div>
