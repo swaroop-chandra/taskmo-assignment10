@@ -1,6 +1,12 @@
 import { optionsPie } from "../dataset/chartDataset";
 import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function MyForm() {
   return (
@@ -155,8 +161,12 @@ export default function MyForm() {
               width="200px"
             />
           </div>
+          <Route path="/qc/select-status">
           <QcscoreComp2 />
-          <div className="redoText">REDO</div>
+          </Route>
+         <Route path="/qc/redo">
+         <div className="redoText">REDO</div>
+         </Route>
         </div>
       </div>
     </>
