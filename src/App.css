@@ -3,12 +3,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-.App {
+/* .App {
   font-family: Poppins;
   background-color: black;
   height: 100vh;
   width: 100vw;
+} */
+
+.App {
+  position: relative;
+  font-family: Poppins;
+  background-color: black;
+  min-height: 150vh;
+  min-width: 113%;
 }
+
 .sidebarHome {
   position: absolute;
   left: 5.52%;
@@ -65,8 +74,8 @@
   background: #f7f7f7;
   border-radius: 30px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
 
 .right-content {
@@ -328,39 +337,39 @@ form::-webkit-scrollbar {
   color: white;
 }
 
-.qcInvalid{
-  width:20vw;
-  margin-bottom:10px;
+.qcInvalid {
+  width: 20vw;
+  margin-bottom: 10px;
   text-align: center;
 }
-.qcscoreComment{
+.qcscoreComment {
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-.commentInput{
-  border: 1px dashed #5961F9;
-  background: #F7F8FC;
+.commentInput {
+  border: 1px dashed #5961f9;
+  background: #f7f8fc;
   height: 41px;
-    width: 20vw;
-    text-align: center;
+  width: 20vw;
+  text-align: center;
 }
-.commentInput:focus{
-  border: 1px dashed #5961F9;
-  background: #F7F8FC;
+.commentInput:focus {
+  border: 1px dashed #5961f9;
+  background: #f7f8fc;
   height: 41px;
-    width: 20vw;
-    text-align: center;
-    outline:none;
+  width: 20vw;
+  text-align: center;
+  outline: none;
 }
-.commentInput::placeholder{
-  padding:10px;
-  color: #005EFF;
+.commentInput::placeholder {
+  padding: 10px;
+  color: #005eff;
   font-family: Poppins;
 }
-.qcCheckDoneContainerParent{
+.qcCheckDoneContainerParent {
   height: 100vh;
-  width:100vw;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -368,39 +377,38 @@ form::-webkit-scrollbar {
   color: #000000;
   font-size: 14px;
 }
-.illustrationImg{
-  height:200px;
+.illustrationImg {
+  height: 200px;
 }
-.qcCheckDoneContainer{
+.qcCheckDoneContainer {
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 6px;
-  box-shadow:0px 0px 20px 2px rgb(179, 178, 178);
+  box-shadow: 0px 0px 20px 2px rgb(179, 178, 178);
   padding: 20px 60px;
 }
-.myBlur{
+.myBlur {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
 }
-.stackTop{
-  z-index:2;
+.stackTop {
+  z-index: 2;
 }
-.qcOkayBtn{
+.qcOkayBtn {
   background-color: black;
-  color:white;
+  color: white;
   font-weight: 700;
   border-radius: 8px;
-  outline:none;
-  padding:10px 20px;
-  margin:10px;
-}
-.qcOkayBtn:focus{
   outline: none;
-  
+  padding: 10px 20px;
+  margin: 10px;
+}
+.qcOkayBtn:focus {
+  outline: none;
 }
