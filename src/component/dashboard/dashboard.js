@@ -1,11 +1,13 @@
 import React from "react";
 
 import Chart from "react-apexcharts";
+import { useHistory } from "react-router";
 import { optionsDonut } from "../../dataset/chartDataset";
 
-function Dashboard({acceptProject}) {
+function Dashboard({ acceptProject }) {
+  const history = useHistory();
   return (
-    <div className={`dash ${acceptProject?"":"myBlur"}`}>
+    <div className={`dash ${acceptProject ? "" : "myBlur"}`}>
       <div className="dash_row1">
         <div className="dash_card">
           <div className="dash_col1">
@@ -44,7 +46,9 @@ function Dashboard({acceptProject}) {
             <input type="button" className="dash_button1" value="Date" />
           </div>
           <div className="dash_row4">
-            <table className="t_dash">
+            <table className="t_dash" onClick={() => {
+                  history.push("/main");
+                }}>
               <tr className="t_tr">
                 <th className="t_th">Leads ID</th>
                 <th className="t_th">Project details</th>

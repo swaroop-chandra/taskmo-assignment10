@@ -404,3 +404,6 @@ form::-webkit-scrollbar {
   outline: none;
   
 }
+.homeHover{
+  cursor:pointer;
+}
