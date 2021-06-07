@@ -1,9 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "./popup.css";
 
-function Popup() {
+function Popup({setAcceptProject,acceptProject}) {
+  const history=useHistory();
+  const acceptFunc=()=>{
+    setAcceptProject(true);
+    history.push("/main")
+  }
+  const rejectFunc=()=>{
+    setAcceptProject(true);
+  }
+
   return (
-    <div className="popup">
+    <div className={`popup ${acceptProject?"behind":""}`}>
       <div className="pop_card">
         <div className="pop_col1">
           <img
@@ -44,8 +54,8 @@ function Popup() {
             <p className="pop_p5">26 Jan 2021</p>
           </div>
           <div className="pop_row2">
-            <input type="button" value="reject" className="b_pop1" />
-            <input type="button" value="accept" className="b_pop1" />
+            <input type="button" value="reject" className="b_pop1" onClick={rejectFunc}/>
+            <input type="button" value="accept" className="b_pop1" onClick={acceptFunc}/>
           </div>
         </div>
       </div>

@@ -9,23 +9,35 @@ import DashboardContainer from "./component/dashboard/dashboardContainer";
 
 function App() {
   const [blur, setBlur] = useState(false);
-  const [loggedIn,setLoggedIn]=useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [acceptProject, setAcceptProject] = useState(false);
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <LoginContainer setLoggedIn={setLoggedIn} />
         </Route>
-        <Route path="/dashboard">
-          <DashboardContainer/>
-        </Route>
-        <Route path="/main">
-          <div className="App">
-            <QcCheckDone blur={blur} setBlur={setBlur} />
-            <SideBar blur={blur} setBlur={setBlur} />
-            <MainContent blur={blur} />
-          </div>
-        </Route>
+        {loggedIn ? (
+          <>
+            <Route path="/dashboard">
+              <DashboardContainer
+                setAcceptProject={setAcceptProject}
+                acceptProject={acceptProject}
+              />
+            </Route>
+            <Route path="/main">
+              <div className="App">
+                <QcCheckDone blur={blur} setBlur={setBlur} />
+                <SideBar blur={blur} setBlur={setBlur} />
+                <MainContent blur={blur} />
+              </div>
+            </Route>
+          </>
+        ) : (
+          <>
+            <div>Please Login</div>
+          </>
+        )}
       </Switch>
     </Router>
   );

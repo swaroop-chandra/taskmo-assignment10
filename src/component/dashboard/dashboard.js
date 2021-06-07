@@ -1,11 +1,11 @@
 import React from "react";
-import "./dashboard.css";
+
 import Chart from "react-apexcharts";
 import { optionsDonut } from "../../dataset/chartDataset";
 
-function Dashboard() {
+function Dashboard({acceptProject}) {
   return (
-    <div className="dash">
+    <div className={`dash ${acceptProject?"":"myBlur"}`}>
       <div className="dash_row1">
         <div className="dash_card">
           <div className="dash_col1">

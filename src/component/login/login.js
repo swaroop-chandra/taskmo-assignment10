@@ -2,10 +2,10 @@ import React from "react";
 import { useHistory } from "react-router";
 import "./login.css";
 
-function Login(props) {
+function Login({setLoggedIn}) {
   const history=useHistory();
   const loginFunc=()=>{
-    console.log(props);
+    setLoggedIn(true);
     history.push("/dashboard");
   }
   return (
