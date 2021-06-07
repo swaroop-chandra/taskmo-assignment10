@@ -33,7 +33,7 @@ function Login({setLoggedIn}) {
       <div className="log_col1">
         <p className="login_p1">Welcome Back !</p>
         <img
-          src={window.location.origin + "/images/bgImage.svg"}
+          src={window.location.origin + "/images/bgImage.png"}
           alt="profile"
           className="bg_img"
         />
