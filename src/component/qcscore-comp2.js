@@ -1,4 +1,4 @@
-export default function QcscoreComp2(){
+export default function QcscoreComp2({setBlur}){
     return <>
     <div className="qcscoreComp2Container">
 
@@ -13,7 +13,9 @@ export default function QcscoreComp2(){
         <div className="btnsContainer">
             <button className="qcScoreBtn">REDO</button>
             <button className="qcScoreBtn">REJECT</button>
-            <button className="qcScoreBtn">APPROVE</button>
+            <button className="qcScoreBtn" onClick={()=>{
+                setBlur(true);
+            }}>APPROVE</button>
         </div>
     </div>
     </>

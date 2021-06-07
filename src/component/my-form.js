@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export default function MyForm() {
+export default function MyForm({setBlur}) {
   return (
     <>
       <div className="form-container">
@@ -157,12 +157,13 @@ export default function MyForm() {
             />
           </div>
           <Switch>
-          <Route exact path="/main">
-            <QcscoreComp2 />
-          </Route>
-          <Route path="/main/redo">
+          <Route exact path="/main/redo">
             <div className="redoText">REDO</div>
           </Route>
+          <Route exact path="/main">
+            <QcscoreComp2 setBlur={setBlur} />
+          </Route>
+          
           </Switch>
         </div>
       </div>

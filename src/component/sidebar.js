@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 
-export default function SideBar({ setBlur }) {
+export default function SideBar() {
   const history = useHistory();
   return (
     <>
@@ -9,8 +9,8 @@ export default function SideBar({ setBlur }) {
           src={window.location.origin + "/images/taskmoLogo.svg"}
           alt={"logo"}
           className="logoImg"
-          onClick={() => {
-            setBlur(true);
+          onClick={()=>{
+            history.push("/main/redo");
           }}
         />
         <div className="QCText">Quality Check</div>

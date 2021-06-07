@@ -28,8 +28,8 @@ function App() {
             <Route path="/main">
               <div className="App">
                 <QcCheckDone blur={blur} setBlur={setBlur} />
-                <SideBar blur={blur} setBlur={setBlur} />
-                <MainContent blur={blur} />
+                <SideBar />
+                <MainContent blur={blur} setBlur={setBlur} />
               </div>
             </Route>
           </>
