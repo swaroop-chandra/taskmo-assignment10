@@ -8,10 +8,10 @@ import {
 export default function MainContent({blur}) {
   return (
     <>
-      <div className={`main-content ${blur?"myBlur":null}`}>
+      <div className={`main-content ${blur?"myBlur":""}`}>
         <Router>
           <Switch>
-            <Route path="/qc">
+            <Route path="/main">
             <MyForm/>
             </Route>
           </Switch>
