@@ -1,7 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "./login.css";
 
-function Login() {
+function Login(props) {
+  const history=useHistory();
+  const loginFunc=()=>{
+    console.log(props);
+    history.push("/dashboard");
+  }
   return (
     // <div
     //   className="login"
@@ -34,7 +40,7 @@ function Login() {
       </div>
       <div className="log_col1">
         <div className="login_card">
-          <div className="login_button">
+          <div className="login_button" onClick={loginFunc}>
             <img
               src={window.location.origin + "/images/gLogo.svg"}
               alt="profile"

@@ -1,7 +1,7 @@
-export default function SideBar({setBlur,blur}) {
+export default function SideBar({setBlur}) {
   return (
     <>
-      <div className={`sidebarHome ${blur?"myBlur":null}`}>
+      <div className={`sidebarHome`}>
         <img
           src={window.location.origin + "/images/taskmoLogo.svg"}
           alt={"logo"}

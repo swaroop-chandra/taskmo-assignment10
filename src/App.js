@@ -9,11 +9,12 @@ import DashboardContainer from "./component/dashboard/dashboardContainer";
 
 function App() {
   const [blur, setBlur] = useState(false);
+  const [loggedIn,setLoggedIn]=useState(false);
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <LoginContainer />
+          <LoginContainer setLoggedIn={setLoggedIn} />
         </Route>
         <Route path="/dashboard">
           <DashboardContainer/>
