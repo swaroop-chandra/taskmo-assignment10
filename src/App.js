@@ -3,8 +3,9 @@ import "./App.css";
 import MainContent from "./component/main-content";
 import QcCheckDone from "./component/qc-check-done";
 import SideBar from "./component/sidebar";
-import LoginContainer from "./login/loginContainer";
+import LoginContainer from "./component/login/loginContainer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import DashboardContainer from "./component/dashboard/dashboardContainer";
 
 function App() {
   const [blur, setBlur] = useState(false);
@@ -13,6 +14,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <LoginContainer />
+        </Route>
+        <Route path="/dashboard">
+          <DashboardContainer/>
         </Route>
         <Route path="/main">
           <div className="App">

@@ -206,4 +206,21 @@
     color: #ff7a00;
     text-transform: uppercase;
   }
+  .App1 {
+    position: absolute;
+    font-family: Poppins;
+    background-color: black;
+    min-height: 600px;
+    min-width: 100%;
+    display: flex;
+  }
+  
+  .app_col1 {
+    width: 20%;
+  }
+  
+  .app_col2 {
+    width: 78%;
+    margin: 20px;
+  }
   
