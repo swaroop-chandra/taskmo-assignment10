@@ -11,13 +11,22 @@
 } */
 
 .App {
-  position: relative;
+  position: absolute;
   font-family: Poppins;
   background-color: black;
-  min-height: 150vh;
-  min-width: 113%;
+  min-height: 600px;
+  min-width: 100%;
+  display: flex;
 }
 
+.app_col1 {
+  width: 20%;
+}
+
+.app_col2 {
+  width: 78%;
+  margin: 20px;
+}
 .sidebarHome {
   position: absolute;
   left: 5.52%;
