@@ -38,7 +38,7 @@ const optionsPie={
                     }
                   }
                 },
-    series: [ 80,20],
+    series: [ 0,0],
     colors:['#F44336', '#E91E63', '#9C27B0'],
     options: {
         legend: {
