@@ -328,6 +328,12 @@ form::-webkit-scrollbar {
   color: white;
 }
 
+.activateQcScoreBtn{
+  color:black;
+  background: white;
+  border:1px solid black;
+}
+
 .qcInvalid{
   width:20vw;
   margin-bottom:10px;
