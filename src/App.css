@@ -407,3 +407,6 @@ form::-webkit-scrollbar {
 .homeHover{
   cursor:pointer;
 }
+.disableClick{
+  pointer-events:"none" !important; 
+}

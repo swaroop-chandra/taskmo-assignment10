@@ -2,8 +2,47 @@ import { optionsPie } from "../dataset/chartDataset";
 import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useState } from "react";
 
-export default function MyForm({setBlur}) {
+export default function MyForm({ setBlur }) {
+  const qcCount = 3;
+  const [yesCount, setYesCount] = useState(0);
+  const [qcScore, setQcScore] = useState(0);
+  const [yesBtnObj, setYesBtnObj] = useState({
+    mobile: "none",
+    email1: "none",
+    email2: "none",
+  }); //yes no none
+
+  const updateScore = (e) => {
+    const label = e.target.dataset.label;
+    const value = e.target.innerText;
+    if (value === "YES") {
+      yesBtnObj[label] = "yes";
+      setYesBtnObj({ ...yesBtnObj });
+      console.log("I am in Yes");
+      console.log(yesBtnObj);
+      let count = 0;
+      for (const key in yesBtnObj) {
+        if (yesBtnObj[key] === "yes") {
+          count = count + 1;
+        }
+      }
+      setYesCount(count);
+    } else if (value === "NO") {
+      yesBtnObj[label] = "no";
+      setYesBtnObj({ ...yesBtnObj });
+      let count = 0;
+      for (const key in yesBtnObj) {
+        if (yesBtnObj[key] === "yes") {
+          count = count + 1;
+        }
+      }
+      setYesCount(count);
+      console.log("I am in No");
+      console.log(yesBtnObj);
+    }
+  };
   return (
     <>
       <div className="form-container">
@@ -61,8 +100,31 @@ export default function MyForm({setBlur}) {
                 value={`7879872341`}
               />
               <div className="yesNo">
-                <div className="btn">NO</div>
-                <div className="btn">YES</div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.mobile === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.mobile === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="mobile"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.mobile === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.mobile === "yes" ? "yesBtn" : ""}`}
+                  data-label="mobile"
+                  onClick={updateScore}
+                  value={`YES`}
+                >
+                  YES
+                </div>
               </div>
             </div>
             <div className="invalidInputText">
@@ -75,7 +137,7 @@ export default function MyForm({setBlur}) {
             </div>
           </div>
           <div className="inputContainer">
-            <div>Email</div>
+            <div>Email1</div>
             <div className="inputAndYesNo">
               <input
                 className="myInputField invalidInput"
@@ -83,8 +145,14 @@ export default function MyForm({setBlur}) {
                 value={`rahul420@gmail.com`}
               />
               <div className="yesNo">
-                <div className="btn">NO</div>
-                <div className="btn yesBtn">YES</div>
+                <div className="btn" >NO</div>
+                <div
+                  className="btn yesBtn"
+                  data-label="email1"
+                  onClick={updateScore}
+                >
+                  YES
+                </div>
               </div>
             </div>
 
@@ -98,7 +166,7 @@ export default function MyForm({setBlur}) {
             </div>
           </div>
           <div className="inputContainer">
-            <div>Email</div>
+            <div>Email2</div>
             <div className="inputAndYesNo">
               <input
                 className="myInputField invalidInput"
@@ -107,7 +175,9 @@ export default function MyForm({setBlur}) {
               />
               <div className="yesNo">
                 <div className="btn noBtn">NO</div>
-                <div className="btn">YES</div>
+                <div className="btn" data-label="email2" onClick={updateScore}>
+                  YES
+                </div>
               </div>
             </div>
 
@@ -157,13 +227,12 @@ export default function MyForm({setBlur}) {
             />
           </div>
           <Switch>
-          <Route exact path="/main/redo">
-            <div className="redoText">REDO</div>
-          </Route>
-          <Route exact path="/main">
-            <QcscoreComp2 setBlur={setBlur} />
-          </Route>
-          
+            <Route exact path="/main/redo">
+              <div className="redoText">REDO</div>
+            </Route>
+            <Route exact path="/main">
+              <QcscoreComp2 setBlur={setBlur} />
+            </Route>
           </Switch>
         </div>
       </div>

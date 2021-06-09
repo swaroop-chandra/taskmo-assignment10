@@ -14,6 +14,11 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/test">
+          <div style={{pointerEvents:"none"}} onClick={()=>{
+            console.log("test is cliced");
+          }}>TEST</div>
+        </Route>
         <Route exact path="/">
           <LoginContainer setLoggedIn={setLoggedIn} />
         </Route>
