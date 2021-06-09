@@ -288,7 +288,7 @@ export default function MyForm({ setBlur }) {
               <div className="redoText">REDO</div>
             </Route>
             <Route exact path="/main">
-              <QcscoreComp2 setBlur={setBlur} />
+              <QcscoreComp2 setBlur={setBlur} qcScore={qcScore} />
             </Route>
           </Switch>
         </div>
