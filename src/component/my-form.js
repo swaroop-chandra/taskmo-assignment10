@@ -2,17 +2,21 @@ import { optionsPie } from "../dataset/chartDataset";
 import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MyForm({ setBlur }) {
   const qcCount = 3;
-  const [yesCount, setYesCount] = useState(0);
+  const [totalCount,setTotalCount]=useState(0);
   const [qcScore, setQcScore] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
     mobile: "none",
     email1: "none",
     email2: "none",
   }); //yes no none
+  
+  useEffect(()=>{
+    setTotalCount(Object.keys(yesBtnObj).length);
+  },[]);
 
   const updateScore = (e) => {
     const label = e.target.dataset.label;
@@ -28,7 +32,12 @@ export default function MyForm({ setBlur }) {
           count = count + 1;
         }
       }
-      setYesCount(count);
+      
+      const score=(count/totalCount)*100;
+      console.log(score);
+      setQcScore(Math.trunc(score));
+      optionsPie.series=[Math.trunc(score), 100-Math.trunc(score)];
+      
     } else if (value === "NO") {
       yesBtnObj[label] = "no";
       setYesBtnObj({ ...yesBtnObj });
@@ -38,9 +47,13 @@ export default function MyForm({ setBlur }) {
           count = count + 1;
         }
       }
-      setYesCount(count);
+      
+      const score=(count/totalCount)*100;
+      console.log(score);
+      setQcScore(Math.trunc(score));
       console.log("I am in No");
       console.log(yesBtnObj);
+      optionsPie.series=[Math.trunc(score), 100-Math.trunc(score)];
     }
   };
   return (
@@ -118,7 +131,9 @@ export default function MyForm({ setBlur }) {
                       yesBtnObj.mobile === "yes" ? "none" : "auto"
                     }`,
                   }}
-                  className={`btn ${yesBtnObj.mobile === "yes" ? "yesBtn" : ""}`}
+                  className={`btn ${
+                    yesBtnObj.mobile === "yes" ? "yesBtn" : ""
+                  }`}
                   data-label="mobile"
                   onClick={updateScore}
                   value={`YES`}
@@ -145,11 +160,30 @@ export default function MyForm({ setBlur }) {
                 value={`rahul420@gmail.com`}
               />
               <div className="yesNo">
-                <div className="btn" >NO</div>
                 <div
-                  className="btn yesBtn"
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.email1 === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.email1 === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="email1"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.email1 === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${
+                    yesBtnObj.email1 === "yes" ? "yesBtn" : ""
+                  }`}
                   data-label="email1"
                   onClick={updateScore}
+                  value={`YES`}
                 >
                   YES
                 </div>
@@ -174,8 +208,31 @@ export default function MyForm({ setBlur }) {
                 value={`rahul420@gmail.com`}
               />
               <div className="yesNo">
-                <div className="btn noBtn">NO</div>
-                <div className="btn" data-label="email2" onClick={updateScore}>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.email2 === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.email2 === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="email2"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.email2 === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${
+                    yesBtnObj.email2 === "yes" ? "yesBtn" : ""
+                  }`}
+                  data-label="email2"
+                  onClick={updateScore}
+                  value={`YES`}
+                >
                   YES
                 </div>
               </div>
@@ -217,7 +274,7 @@ export default function MyForm({ setBlur }) {
         <div className="qcScore">
           <div className="qcScoreText">QC Score</div>
           <div className="donutStyle">
-            <div className="donutLegend">80%</div>
+            <div className="donutLegend">{`${qcScore}%`}</div>
 
             <Chart
               options={optionsPie.options}
