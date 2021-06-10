@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { LEAD_FIELDS_URL } from "../utils";
 
 export default function MyForm({ setBlur }) {
-  const qcCount = 3;
+  const [mydate,setMyDate]=useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
@@ -27,6 +27,13 @@ export default function MyForm({ setBlur }) {
       }),
     }).then(r=>r.json()).then((r)=>{
         setApi(r.lead_details);
+        const d=new Date(r.lead_details.created_on);
+        const day=d.getDate();
+        const month=d.getMonth();
+        const year=d.getFullYear();
+        const dateString=`${day<10?"0"+day:day}/${month<10?"0"+(month+1):(month+1)}/${year}`;
+        setMyDate(dateString);
+        console.log(d,day,month,year,dateString)
     });
   }, []);
 
@@ -79,9 +86,9 @@ export default function MyForm({ setBlur }) {
         </div>
         <div className="form">
           <div className="inputContainer">
-            <div>Shop Name</div>
+            <div>Lead Id</div>
             <div>
-              <input className="myInputField" disabled value={`Jio Mart`} />
+              <input className="myInputField" disabled value={api.lead_id?api.lead_id:"Jio Mart"} />
             </div>
           </div>
           <div className="inputContainer">
@@ -90,7 +97,17 @@ export default function MyForm({ setBlur }) {
               <input
                 className="myInputField"
                 disabled
-                value={`25th July 2021`}
+                value={`${mydate.length>0?mydate:"25/07/2021"}`}
+              />
+            </div>
+          </div>
+          <div className="inputContainer">
+            <div>Merchant Contact Number</div>
+            <div>
+              <input
+                className="myInputField"
+                disabled
+                value={`${api.merchant_number?api.merchant_number:"xxxxxxx119"}`}
               />
             </div>
           </div>
