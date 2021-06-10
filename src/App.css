@@ -6,17 +6,17 @@
 .App {
   font-family: Poppins;
   background-color: black;
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh; */
+  /* width: 100vw; */
 }
 .sidebarHome {
   position: absolute;
   left: 5.52%;
   right: 80.31%;
   top: 10.64%;
-  bottom: 54.99%;
+  /* bottom: 54.99%; */
   display: flex;
-  align-items: left;
+  /* align-items: left; */
   flex-direction: column;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .main-content {
-  position: absolute;
+  position: relative;
   left: 19.88%;
   right: 2.45%;
   top: 3.15%;
@@ -66,12 +66,13 @@
   border-radius: 30px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
+  margin: 10px 0px;
 }
 
 .right-content {
   background-color: #ebf2ff;
-  height: 93vh;
+  /* height: 93vh; */
   /* width: 20vw; */
   padding: 0px 10px;
   border-radius: 0px 30px 30px 0px;
@@ -90,7 +91,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  height: 84vh;
+  /* height: 84vh; */
 }
 .backArrow {
   background-color: black;
@@ -116,7 +117,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  overflow: overlay;
+  /* overflow: overlay; */
 }
 form::-webkit-scrollbar {
   width: 1em;
