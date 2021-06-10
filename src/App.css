@@ -216,6 +216,7 @@ form::-webkit-scrollbar {
   padding: 20px;
   overflow: overlay;
   width: 18vw;
+  margin: 10px 0px;
 }
 .remark::-webkit-scrollbar {
   width: 1em;
@@ -226,6 +227,7 @@ form::-webkit-scrollbar {
   border: 1px solid rgba(29, 28, 29, 0.13);
   border-radius: 16px 16px 0px 0px;
   width: 21vw;
+  margin: 0px 0px 20px 0px;
 }
 .qcContent {
   display: flex;

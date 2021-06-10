@@ -328,6 +328,18 @@ export default function MyForm({ setBlur }) {
               Email ID is incorrect
             </div>
           </div>
+          <div>
+            <div className="qcStyle">QC01</div>
+            <div className="qcContent invalidInputText">
+              Email ID is incorrect
+            </div>
+          </div>
+          <div>
+            <div className="qcStyle">QC02</div>
+            <div className="qcContent invalidInputText">
+              Email ID is incorrect
+            </div>
+          </div>
         </div>
         <div className="qcScore">
           <div className="qcScoreText">QC Score</div>
