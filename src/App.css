@@ -92,6 +92,7 @@
   flex-direction: column;
   padding: 20px;
   /* height: 84vh; */
+  margin: 10px;
 }
 .backArrow {
   background-color: black;

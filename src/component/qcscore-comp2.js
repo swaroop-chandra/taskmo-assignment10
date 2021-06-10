@@ -13,14 +13,14 @@ export default function QcscoreComp2({ setBlur, qcScore }) {
             disabled={qcScore === 100}
           />
         </div>
-        <div className="invalidInputText qcInvalid">
+        {/* <div className="invalidInputText qcInvalid">
           <img
             src={window.location.origin + "/images/warningIcon.svg"}
             alt="warning icon"
             className="warningIcon"
           />
           Email ID not verified. Please verify again!
-        </div>
+        </div> */}
         <div className="fakeOnBoarding">
           <input
             type="checkbox"
