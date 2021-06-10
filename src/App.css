@@ -10,7 +10,7 @@
   /* width: 100vw; */
 }
 .sidebarHome {
-  position: absolute;
+  position: fixed;
   left: 5.52%;
   right: 80.31%;
   top: 10.64%;
