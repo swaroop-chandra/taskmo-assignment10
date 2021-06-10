@@ -3,20 +3,32 @@ import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { LEAD_FIELDS_URL } from "../utils";
 
 export default function MyForm({ setBlur }) {
   const qcCount = 3;
-  const [totalCount,setTotalCount]=useState(0);
+  const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
     mobile: "none",
     email1: "none",
     email2: "none",
   }); //yes no none
-  
-  useEffect(()=>{
+  const [api,setApi]=useState({});
+  useEffect(() => {
     setTotalCount(Object.keys(yesBtnObj).length);
-  },[]);
+    fetch(LEAD_FIELDS_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        lead_id: "31",
+      }),
+    }).then(r=>r.json()).then((r)=>{
+        setApi(r.lead_details);
+    });
+  }, []);
 
   const updateScore = (e) => {
     const label = e.target.dataset.label;
@@ -32,12 +44,11 @@ export default function MyForm({ setBlur }) {
           count = count + 1;
         }
       }
-      
-      const score=(count/totalCount)*100;
+
+      const score = (count / totalCount) * 100;
       console.log(score);
       setQcScore(Math.trunc(score));
-      optionsPie.series=[Math.trunc(score), 100-Math.trunc(score)];
-      
+      optionsPie.series = [Math.trunc(score), 100 - Math.trunc(score)];
     } else if (value === "NO") {
       yesBtnObj[label] = "no";
       setYesBtnObj({ ...yesBtnObj });
@@ -47,13 +58,13 @@ export default function MyForm({ setBlur }) {
           count = count + 1;
         }
       }
-      
-      const score=(count/totalCount)*100;
+
+      const score = (count / totalCount) * 100;
       console.log(score);
       setQcScore(Math.trunc(score));
       console.log("I am in No");
       console.log(yesBtnObj);
-      optionsPie.series=[Math.trunc(score), 100-Math.trunc(score)];
+      optionsPie.series = [Math.trunc(score), 100 - Math.trunc(score)];
     }
   };
   return (
@@ -68,7 +79,7 @@ export default function MyForm({ setBlur }) {
         </div>
         <div className="form">
           <div className="inputContainer">
-            <div>Project Name</div>
+            <div>Shop Name</div>
             <div>
               <input className="myInputField" disabled value={`Jio Mart`} />
             </div>
@@ -94,16 +105,17 @@ export default function MyForm({ setBlur }) {
             </div>
           </div>
           <div className="inputContainer">
-            <div>Pan Card</div>
+            <div>Aadhar Card</div>
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={window.location.origin + "/images/panCard.svg"}
+                src={`${/*Object.keys(api).length>0?api.aadhar_front_image:*/window.location.origin + "/images/panCard.svg"}`}
                 alt="pan-card"
                 className="panImg"
               />
             </div>
           </div>
+          
           <div className="inputContainer">
             <div>Mobile</div>
             <div className="inputAndYesNo">
