@@ -112,7 +112,7 @@ export default function MyForm({ setBlur }) {
             </div>
           </div>
           <div className="inputContainer">
-            <div>Merchant Contact Number</div>
+            <div>Contact Number</div>
             <div>
               <input
                 className="myInputField"
@@ -243,7 +243,7 @@ export default function MyForm({ setBlur }) {
           </div>
           
           <div className="inputContainer">
-            <div>Merchant Aadhar Number</div>
+            <div>Aadhar Number</div>
             <div className="inputAndYesNo">
               <input
                 className="myInputField invalidInput"
