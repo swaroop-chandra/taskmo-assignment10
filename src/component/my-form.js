@@ -10,9 +10,9 @@ export default function MyForm({ setBlur }) {
   const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
-    mobile: "none",
-    email1: "none",
-    email2: "none",
+    shopName:"none",
+    category: "none",
+    aadhar:"none"
   }); //yes no none
   const [api,setApi]=useState({});
   useEffect(() => {
@@ -102,6 +102,16 @@ export default function MyForm({ setBlur }) {
             </div>
           </div>
           <div className="inputContainer">
+            <div>Area</div>
+            <div>
+              <input
+                className="myInputField"
+                disabled
+                value={`${api.area?api.area:"my area"}`}
+              />
+            </div>
+          </div>
+          <div className="inputContainer">
             <div>Merchant Contact Number</div>
             <div>
               <input
@@ -112,17 +122,175 @@ export default function MyForm({ setBlur }) {
             </div>
           </div>
           <div className="inputContainer">
-            <div>Area</div>
-            <div>
+            <div>Shop Name</div>
+            <div className="inputAndYesNo">
               <input
-                className="myInputField"
+                className="myInputField invalidInput"
                 disabled
-                value={`Bangaluru, Karnataka`}
+                value={`${api.shop_name?api.shop_name:"My Shop Name"}`}
               />
+              <div className="yesNo">
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.shopName === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.shopName === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="shopName"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.shopName === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${
+                    yesBtnObj.shopName === "yes" ? "yesBtn" : ""
+                  }`}
+                  data-label="shopName"
+                  onClick={updateScore}
+                  value={`YES`}
+                >
+                  YES
+                </div>
+              </div>
+            </div>
+            <div className="invalidInputText">
+              <img
+                src={window.location.origin + "/images/warningIcon.svg"}
+                alt="warning icon"
+                className="warningIcon"
+              />
+              Shop name not verified. Please verify again!
             </div>
           </div>
           <div className="inputContainer">
-            <div>Aadhar Card</div>
+            <div>Category</div>
+            <div className="inputAndYesNo">
+              <input
+                className="myInputField invalidInput"
+                disabled
+                value={`${api.category?api.category:"My Category"}`}
+              />
+              <div className="yesNo">
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.category === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.category === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="category"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.category === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${
+                    yesBtnObj.category === "yes" ? "yesBtn" : ""
+                  }`}
+                  data-label="category"
+                  onClick={updateScore}
+                  value={`YES`}
+                >
+                  YES
+                </div>
+              </div>
+            </div>
+            <div className="invalidInputText">
+              <img
+                src={window.location.origin + "/images/warningIcon.svg"}
+                alt="warning icon"
+                className="warningIcon"
+              />
+              Category not verified. Please verify again!
+            </div>
+          </div>
+          
+          <div className="inputContainer">
+            <div>Shop Images</div>
+            <div className="panCardContainer">
+              {/* <input className="myInputField" disabled /> */}
+              <img
+                src={`${/*Object.keys(api).length>0?api.shop_image1:*/window.location.origin + "/images/panCard.svg"}`}
+                alt="pan-card"
+                className="panImg"
+              />
+              <img
+                src={`${/*Object.keys(api).length>0?api.shop_image2:*/window.location.origin + "/images/panCard.svg"}`}
+                alt="pan-card"
+                className="panImg"
+              />
+            </div>
+            <div className="panCardContainer">
+              {/* <input className="myInputField" disabled /> */}
+              <img
+                src={`${/*Object.keys(api).length>0?api.shop_image3:*/window.location.origin + "/images/panCard.svg"}`}
+                alt="pan-card"
+                className="panImg"
+              />
+              
+            </div>
+          </div>
+          
+          <div className="inputContainer">
+            <div>Merchant Aadhar Number</div>
+            <div className="inputAndYesNo">
+              <input
+                className="myInputField invalidInput"
+                disabled
+                value={`${api.aadhar_number?api.aadhar_number:"xxxx xxxx xxxx"}`}
+              />
+              <div className="yesNo">
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.aadhar === "no" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${yesBtnObj.aadhar === "no" ? "noBtn" : ""}`}
+                  onClick={updateScore}
+                  data-label="aadhar"
+                >
+                  NO
+                </div>
+                <div
+                  style={{
+                    pointerEvents: `${
+                      yesBtnObj.aadhar === "yes" ? "none" : "auto"
+                    }`,
+                  }}
+                  className={`btn ${
+                    yesBtnObj.aadhar === "yes" ? "yesBtn" : ""
+                  }`}
+                  data-label="aadhar"
+                  onClick={updateScore}
+                  value={`YES`}
+                >
+                  YES
+                </div>
+              </div>
+            </div>
+            <div className="invalidInputText">
+              <img
+                src={window.location.origin + "/images/warningIcon.svg"}
+                alt="warning icon"
+                className="warningIcon"
+              />
+              Aadhar number not verified. Please verify again!
+            </div>
+          </div>          
+          <div className="inputContainer">
+            {/* <div>Aadhar Card</div> */}
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
@@ -130,153 +298,14 @@ export default function MyForm({ setBlur }) {
                 alt="pan-card"
                 className="panImg"
               />
-            </div>
-          </div>
-          
-          <div className="inputContainer">
-            <div>Mobile</div>
-            <div className="inputAndYesNo">
-              <input
-                className="myInputField invalidInput"
-                disabled
-                value={`7879872341`}
-              />
-              <div className="yesNo">
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.mobile === "no" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${yesBtnObj.mobile === "no" ? "noBtn" : ""}`}
-                  onClick={updateScore}
-                  data-label="mobile"
-                >
-                  NO
-                </div>
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.mobile === "yes" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${
-                    yesBtnObj.mobile === "yes" ? "yesBtn" : ""
-                  }`}
-                  data-label="mobile"
-                  onClick={updateScore}
-                  value={`YES`}
-                >
-                  YES
-                </div>
-              </div>
-            </div>
-            <div className="invalidInputText">
               <img
-                src={window.location.origin + "/images/warningIcon.svg"}
-                alt="warning icon"
-                className="warningIcon"
+                src={`${/*Object.keys(api).length>0?api.aadhar_front_image:*/window.location.origin + "/images/panCard.svg"}`}
+                alt="pan-card"
+                className="panImg"
               />
-              Email ID not verified. Please verify again!
             </div>
           </div>
-          <div className="inputContainer">
-            <div>Email1</div>
-            <div className="inputAndYesNo">
-              <input
-                className="myInputField invalidInput"
-                disabled
-                value={`rahul420@gmail.com`}
-              />
-              <div className="yesNo">
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.email1 === "no" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${yesBtnObj.email1 === "no" ? "noBtn" : ""}`}
-                  onClick={updateScore}
-                  data-label="email1"
-                >
-                  NO
-                </div>
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.email1 === "yes" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${
-                    yesBtnObj.email1 === "yes" ? "yesBtn" : ""
-                  }`}
-                  data-label="email1"
-                  onClick={updateScore}
-                  value={`YES`}
-                >
-                  YES
-                </div>
-              </div>
-            </div>
-
-            <div className="invalidInputText">
-              <img
-                src={window.location.origin + "/images/warningIcon.svg"}
-                alt="warning icon"
-                className="warningIcon"
-              />
-              Email ID not verified. Please verify again!
-            </div>
-          </div>
-          <div className="inputContainer">
-            <div>Email2</div>
-            <div className="inputAndYesNo">
-              <input
-                className="myInputField invalidInput"
-                disabled
-                value={`rahul420@gmail.com`}
-              />
-              <div className="yesNo">
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.email2 === "no" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${yesBtnObj.email2 === "no" ? "noBtn" : ""}`}
-                  onClick={updateScore}
-                  data-label="email2"
-                >
-                  NO
-                </div>
-                <div
-                  style={{
-                    pointerEvents: `${
-                      yesBtnObj.email2 === "yes" ? "none" : "auto"
-                    }`,
-                  }}
-                  className={`btn ${
-                    yesBtnObj.email2 === "yes" ? "yesBtn" : ""
-                  }`}
-                  data-label="email2"
-                  onClick={updateScore}
-                  value={`YES`}
-                >
-                  YES
-                </div>
-              </div>
-            </div>
-
-            <div className="invalidInputText">
-              <img
-                src={window.location.origin + "/images/warningIcon.svg"}
-                alt="warning icon"
-                className="warningIcon"
-              />
-              Email ID not verified. Please verify again!
-            </div>
-          </div>
-        </div>
+</div>
       </div>
       <div className="right-content">
         <div className="remark">
