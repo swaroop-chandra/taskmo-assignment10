@@ -353,18 +353,20 @@ form::-webkit-scrollbar {
   background: #F7F8FC;
   height: 41px;
     width: 20vw;
-    text-align: center;
+    /* text-align: center; */
+    padding:0px 20px;
+    
 }
 .commentInput:focus{
   border: 1px dashed #5961F9;
   background: #F7F8FC;
   height: 41px;
     width: 20vw;
-    text-align: center;
+    /* text-align: center; */
     outline:none;
 }
 .commentInput::placeholder{
-  padding:10px;
+  /* padding:10px; */
   color: #005EFF;
   font-family: Poppins;
 }
