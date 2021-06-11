@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { LEAD_FIELDS_URL } from "../utils";
+import { NINJACART_LEAD_FIELDS_URL,NINJACART_QC_REMARKS_URL } from "../utils";
 
 export default function MyForm({ setBlur }) {
   const [mydate,setMyDate]=useState("");
@@ -15,9 +15,10 @@ export default function MyForm({ setBlur }) {
     aadhar:"none"
   }); //yes no none
   const [api,setApi]=useState({});
-  useEffect(() => {
-    setTotalCount(Object.keys(yesBtnObj).length);
-    fetch(LEAD_FIELDS_URL, {
+  const [remarkApi,setRemarkApi]=useState([]);
+
+  const getLeadDetails=()=>{
+    fetch(NINJACART_LEAD_FIELDS_URL, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -26,6 +27,7 @@ export default function MyForm({ setBlur }) {
         lead_id: "31",
       }),
     }).then(r=>r.json()).then((r)=>{
+      console.log(r);
         setApi(r.lead_details);
         const d=new Date(r.lead_details.created_on);
         const day=d.getDate();
@@ -33,9 +35,31 @@ export default function MyForm({ setBlur }) {
         const year=d.getFullYear();
         const dateString=`${day<10?"0"+day:day}/${month<10?"0"+(month+1):(month+1)}/${year}`;
         setMyDate(dateString);
-        console.log(d,day,month,year,dateString)
-    });
+        getQcRemarks(r.lead_details.merchant_number);
+    }).catch(e=>console.log("error",e));
+  }
+
+  const getQcRemarks=(merchant_number)=>{
+    fetch(NINJACART_QC_REMARKS_URL,{
+      method:"POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        merchant_number
+      }),
+    }).then(r=>r.json()).then((r)=>{
+      console.log(r);
+      setRemarkApi(r);
+    })
+  }
+
+  useEffect(() => {
+    setTotalCount(Object.keys(yesBtnObj).length);
+    getLeadDetails();
   }, []);
+
+
 
   const updateScore = (e) => {
     const label = e.target.dataset.label;
@@ -309,6 +333,7 @@ export default function MyForm({ setBlur }) {
       </div>
       <div className="right-content">
         <div className="remark">
+          
           <div className="remarkIcon">
             <img
               src={window.location.origin + "/images/remarkIcon.svg"}
@@ -316,30 +341,17 @@ export default function MyForm({ setBlur }) {
             />
             <div>Remark</div>
           </div>
-          <div>
-            <div className="qcStyle">QC01</div>
+          {remarkApi.map(({qc_remark},idx)=>{
+              return <>
+              <div key={idx}>
+            <div className="qcStyle">{`QC ${idx+1}`}</div>
             <div className="qcContent invalidInputText">
-              Email ID is incorrect
+              {qc_remark}
             </div>
           </div>
-          <div>
-            <div className="qcStyle">QC02</div>
-            <div className="qcContent invalidInputText">
-              Email ID is incorrect
-            </div>
-          </div>
-          <div>
-            <div className="qcStyle">QC01</div>
-            <div className="qcContent invalidInputText">
-              Email ID is incorrect
-            </div>
-          </div>
-          <div>
-            <div className="qcStyle">QC02</div>
-            <div className="qcContent invalidInputText">
-              Email ID is incorrect
-            </div>
-          </div>
+              </>
+          })}
+          
         </div>
         <div className="qcScore">
           <div className="qcScoreText">QC Score</div>
