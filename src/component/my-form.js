@@ -3,21 +3,27 @@ import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL,NINJACART_QC_REMARKS_URL } from "../utils";
+import {
+  IMAGES_BASE_URL,
+  NINJACART_LEAD_FIELDS_URL,
+  NINJACART_QC_REMARKS_URL,
+} from "../utils";
+import ImagePreview from "./image-preview";
 
-export default function MyForm({ setBlur,leadId }) {
-  const [mydate,setMyDate]=useState("");
+export default function MyForm({ setBlur, leadId,setImagePreview }) {
+  const [mydate, setMyDate] = useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
   const [yesBtnObj, setYesBtnObj] = useState({
-    shopName:"none",
+    shopName: "none",
     category: "none",
-    aadhar:"none"
+    aadhar: "none",
   }); //yes no none
-  const [api,setApi]=useState({});
-  const [remarkApi,setRemarkApi]=useState([]);
+  const [api, setApi] = useState({});
+  const [remarkApi, setRemarkApi] = useState([]);
+  
 
-  const getLeadDetails=()=>{
+  const getLeadDetails = () => {
     fetch(NINJACART_LEAD_FIELDS_URL, {
       method: "POST",
       headers: {
@@ -26,40 +32,45 @@ export default function MyForm({ setBlur,leadId }) {
       body: JSON.stringify({
         lead_id: leadId,
       }),
-    }).then(r=>r.json()).then((r)=>{
-      console.log("resonponse from ninjacart leads",r);
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log("resonponse from ninjacart leads", r);
         setApi(r.lead_details);
-        const d=new Date(r.lead_details.created_on);
-        const day=d.getDate();
-        const month=d.getMonth();
-        const year=d.getFullYear();
-        const dateString=`${day<10?"0"+day:day}/${month<10?"0"+(month+1):(month+1)}/${year}`;
+        const d = new Date(r.lead_details.created_on);
+        const day = d.getDate();
+        const month = d.getMonth();
+        const year = d.getFullYear();
+        const dateString = `${day < 10 ? "0" + day : day}/${
+          month < 10 ? "0" + (month + 1) : month + 1
+        }/${year}`;
         setMyDate(dateString);
         getQcRemarks(r.lead_details.merchant_number);
-    }).catch(e=>console.log("error",e));
-  }
+      })
+      .catch((e) => console.log("error", e));
+  };
 
-  const getQcRemarks=(merchant_number)=>{
-    fetch(NINJACART_QC_REMARKS_URL,{
-      method:"POST",
+  const getQcRemarks = (merchant_number) => {
+    fetch(NINJACART_QC_REMARKS_URL, {
+      method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        merchant_number
+        merchant_number,
       }),
-    }).then(r=>r.json()).then((r)=>{
-      console.log(r);
-      setRemarkApi(r);
     })
-  }
+      .then((r) => r.json())
+      .then((r) => {
+        console.log(r);
+        setRemarkApi(r);
+      });
+  };
 
   useEffect(() => {
     setTotalCount(Object.keys(yesBtnObj).length);
     getLeadDetails();
   }, []);
-
-
 
   const updateScore = (e) => {
     const label = e.target.dataset.label;
@@ -112,7 +123,11 @@ export default function MyForm({ setBlur,leadId }) {
           <div className="inputContainer">
             <div>Lead Id</div>
             <div>
-              <input className="myInputField" disabled value={Object.keys(api).length>0?api.lead_id:"Jio Mart"} />
+              <input
+                className="myInputField"
+                disabled
+                value={Object.keys(api).length > 0 ? api.lead_id : "Jio Mart"}
+              />
             </div>
           </div>
           <div className="inputContainer">
@@ -121,7 +136,7 @@ export default function MyForm({ setBlur,leadId }) {
               <input
                 className="myInputField"
                 disabled
-                value={`${mydate.length>0?mydate:"25/07/2021"}`}
+                value={`${mydate.length > 0 ? mydate : "25/07/2021"}`}
               />
             </div>
           </div>
@@ -131,7 +146,7 @@ export default function MyForm({ setBlur,leadId }) {
               <input
                 className="myInputField"
                 disabled
-                value={`${api.area?api.area:"my area"}`}
+                value={`${api.area ? api.area : "my area"}`}
               />
             </div>
           </div>
@@ -141,7 +156,9 @@ export default function MyForm({ setBlur,leadId }) {
               <input
                 className="myInputField"
                 disabled
-                value={`${api.merchant_number?api.merchant_number:"xxxxxxx119"}`}
+                value={`${
+                  api.merchant_number ? api.merchant_number : "xxxxxxx119"
+                }`}
               />
             </div>
           </div>
@@ -151,7 +168,7 @@ export default function MyForm({ setBlur,leadId }) {
               <input
                 className="myInputField invalidInput"
                 disabled
-                value={`${api.shop_name?api.shop_name:"My Shop Name"}`}
+                value={`${api.shop_name ? api.shop_name : "My Shop Name"}`}
               />
               <div className="yesNo">
                 <div
@@ -160,7 +177,9 @@ export default function MyForm({ setBlur,leadId }) {
                       yesBtnObj.shopName === "no" ? "none" : "auto"
                     }`,
                   }}
-                  className={`btn ${yesBtnObj.shopName === "no" ? "noBtn" : ""}`}
+                  className={`btn ${
+                    yesBtnObj.shopName === "no" ? "noBtn" : ""
+                  }`}
                   onClick={updateScore}
                   data-label="shopName"
                 >
@@ -198,7 +217,7 @@ export default function MyForm({ setBlur,leadId }) {
               <input
                 className="myInputField invalidInput"
                 disabled
-                value={`${api.category?api.category:"My Category"}`}
+                value={`${api.category ? api.category : "My Category"}`}
               />
               <div className="yesNo">
                 <div
@@ -207,7 +226,9 @@ export default function MyForm({ setBlur,leadId }) {
                       yesBtnObj.category === "no" ? "none" : "auto"
                     }`,
                   }}
-                  className={`btn ${yesBtnObj.category === "no" ? "noBtn" : ""}`}
+                  className={`btn ${
+                    yesBtnObj.category === "no" ? "noBtn" : ""
+                  }`}
                   onClick={updateScore}
                   data-label="category"
                 >
@@ -239,40 +260,85 @@ export default function MyForm({ setBlur,leadId }) {
               Category not verified. Please verify again!
             </div>
           </div>
-          
+
           <div className="inputContainer">
             <div>Shop Images</div>
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
+              <div>
               <img
-                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_1}`:window.location.origin + "/images/panCard.svg"}`}
+                src={`${
+                  Object.keys(api).length > 0
+                    ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                    : window.location.origin + "/images/panCard.svg"
+                }`}
                 alt="shop_image_1"
                 className="panImg"
+                onClick={() => {
+                  setImagePreview({
+                    status:true,
+                    url:`${
+                      Object.keys(api).length > 0
+                        ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
+                        : window.location.origin + "/images/panCard.svg"
+                    }`
+                  });
+                }}
               />
+              </div>
               <img
-                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_2}`:window.location.origin + "/images/panCard.svg"}`}
+                src={`${
+                  Object.keys(api).length > 0
+                    ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
+                    : window.location.origin + "/images/panCard.svg"
+                }`}
                 alt="pan-card"
                 className="panImg"
+                onClick={() => {
+                  setImagePreview({
+                    status:true,
+                    url:`${
+                      Object.keys(api).length > 0
+                        ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
+                        : window.location.origin + "/images/panCard.svg"
+                    }`
+                  });
+                }}
               />
             </div>
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_3}`:window.location.origin + "/images/panCard.svg"}`}
+                src={`${
+                  Object.keys(api).length > 0
+                    ? `${IMAGES_BASE_URL}/${api.shop_image_3}`
+                    : window.location.origin + "/images/panCard.svg"
+                }`}
                 alt="pan-card"
                 className="panImg"
+                onClick={() => {
+                  setImagePreview({
+                    status:true,
+                    url:`${
+                      Object.keys(api).length > 0
+                        ? `${IMAGES_BASE_URL}/${api.shop_image_3}`
+                        : window.location.origin + "/images/panCard.svg"
+                    }`
+                  });
+                }}
               />
-              
             </div>
           </div>
-          
+
           <div className="inputContainer">
             <div>Aadhar Number</div>
             <div className="inputAndYesNo">
               <input
                 className="myInputField invalidInput"
                 disabled
-                value={`${api.aadhar_number?api.aadhar_number:"xxxx xxxx xxxx"}`}
+                value={`${
+                  api.aadhar_number ? api.aadhar_number : "xxxx xxxx xxxx"
+                }`}
               />
               <div className="yesNo">
                 <div
@@ -312,48 +378,81 @@ export default function MyForm({ setBlur,leadId }) {
               />
               Aadhar number not verified. Please verify again!
             </div>
-          </div>          
+          </div>
           <div className="inputContainer">
             {/* <div>Aadhar Card</div> */}
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.aadhar_front_image}`:window.location.origin + "/images/panCard.svg"}`}
+                src={`${
+                  Object.keys(api).length > 0
+                    ? `${IMAGES_BASE_URL}/${api.aadhar_front_image}`
+                    : window.location.origin + "/images/panCard.svg"
+                }`}
                 alt="pan-card"
                 className="panImg"
+                onClick={() => {
+                  setImagePreview({
+                    status:true,
+                    url:`${
+                      Object.keys(api).length > 0
+                        ? `${IMAGES_BASE_URL}/${api.aadhar_front_image}`
+                        : window.location.origin + "/images/panCard.svg"
+                    }`
+                  });
+                }}
               />
               <img
-                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.aadhar_back_image}`:window.location.origin + "/images/panCard.svg"}`}
+                src={`${
+                  Object.keys(api).length > 0
+                    ? `${IMAGES_BASE_URL}/${api.aadhar_back_image}`
+                    : window.location.origin + "/images/panCard.svg"
+                }`}
                 alt="pan-card"
                 className="panImg"
+                onClick={() => {
+                  setImagePreview({
+                    status:true,
+                    url:`${
+                      Object.keys(api).length > 0
+                        ? `${IMAGES_BASE_URL}/${api.aadhar_back_image}`
+                        : window.location.origin + "/images/panCard.svg"
+                    }`
+                  });
+                }}
               />
             </div>
           </div>
-</div>
+        </div>
       </div>
       <div className="right-content">
-        {remarkApi.length>0?<>
-          <div className="remark">
-          
-          <div className="remarkIcon">
-            <img
-              src={window.location.origin + "/images/remarkIcon.svg"}
-              alt="remark"
-            />
-            <div>Remark</div>
-          </div>
-          {remarkApi.map(({qc_remark},idx)=>{
-              return <>
-              <div key={idx}>
-            <div className="qcStyle">{`QC ${idx+1}`}</div>
-            <div className="qcContent invalidInputText">
-              {qc_remark}
+        {remarkApi.length > 0 ? (
+          <>
+            <div className="remark">
+              <div className="remarkIcon">
+                <img
+                  src={window.location.origin + "/images/remarkIcon.svg"}
+                  alt="remark"
+                />
+                <div>Remark</div>
+              </div>
+              {remarkApi.map(({ qc_remark }, idx) => {
+                return (
+                  <>
+                    <div key={idx}>
+                      <div className="qcStyle">{`QC ${idx + 1}`}</div>
+                      <div className="qcContent invalidInputText">
+                        {qc_remark}
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
             </div>
-          </div>
-              </>
-          })}
-        </div>
-        </>:<></>}
+          </>
+        ) : (
+          <></>
+        )}
         <div className="qcScore">
           <div className="qcScoreText">QC Score</div>
           <div className="donutStyle">
