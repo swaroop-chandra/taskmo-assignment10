@@ -16,7 +16,7 @@ export default function ImagePreview({imagePreview,setImagePreview}) {
             setImagePreview({...imagePreview});
           }}
         >
-          OKAY
+          CLOSE
         </button>
       </div>
     </div>

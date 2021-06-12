@@ -8,7 +8,6 @@ import {
   NINJACART_LEAD_FIELDS_URL,
   NINJACART_QC_REMARKS_URL,
 } from "../utils";
-import ImagePreview from "./image-preview";
 
 export default function MyForm({ setBlur, leadId,setImagePreview }) {
   const [mydate, setMyDate] = useState("");
@@ -126,7 +125,7 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
               <input
                 className="myInputField"
                 disabled
-                value={Object.keys(api).length > 0 ? api.lead_id : "Jio Mart"}
+                value={Object.keys(api).length > 0 ? /*api.lead_id*/leadId : "123"}
               />
             </div>
           </div>
@@ -470,7 +469,7 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
               <div className="redoText">REDO</div>
             </Route>
             <Route exact path="/main">
-              <QcscoreComp2 setBlur={setBlur} qcScore={qcScore} />
+              <QcscoreComp2 setBlur={setBlur} qcScore={qcScore} leadId={leadId}/>
             </Route>
           </Switch>
         </div>
