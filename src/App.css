@@ -133,8 +133,8 @@ form::-webkit-scrollbar {
 }
 .panCardContainer {
   margin-top: 5px;
-  /* height: 125px;
-  width: 31.5vw; */
+  height: 150px;
+  width: 31.5vw;
   display: flex;
   background: #f7f8fc;
   border: 1px dashed #5961f9;
@@ -142,7 +142,7 @@ form::-webkit-scrollbar {
   align-items: center;
 }
 .panImg {
-  height: 200px;
+  height: 125px;
     /* width: 23vw; */
     margin: 10px;
 }

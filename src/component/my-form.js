@@ -9,7 +9,7 @@ import {
   NINJACART_QC_REMARKS_URL,
 } from "../utils";
 
-export default function MyForm({ setBlur, leadId,setImagePreview }) {
+export default function MyForm({ setBlur, leadId, setImagePreview }) {
   const [mydate, setMyDate] = useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
@@ -20,7 +20,6 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
   }); //yes no none
   const [api, setApi] = useState({});
   const [remarkApi, setRemarkApi] = useState([]);
-  
 
   const getLeadDetails = () => {
     fetch(NINJACART_LEAD_FIELDS_URL, {
@@ -125,7 +124,9 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
               <input
                 className="myInputField"
                 disabled
-                value={Object.keys(api).length > 0 ? /*api.lead_id*/leadId : "123"}
+                value={
+                  Object.keys(api).length > 0 ? /*api.lead_id*/ leadId : "123"
+                }
               />
             </div>
           </div>
@@ -264,7 +265,7 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
             <div>Shop Images</div>
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
-              <div>
+
               <img
                 src={`${
                   Object.keys(api).length > 0
@@ -275,16 +276,16 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
                 className="panImg"
                 onClick={() => {
                   setImagePreview({
-                    status:true,
-                    url:`${
+                    status: true,
+                    url: `${
                       Object.keys(api).length > 0
                         ? `${IMAGES_BASE_URL}/${api.shop_image_1}`
                         : window.location.origin + "/images/panCard.svg"
-                    }`
+                    }`,
                   });
                 }}
               />
-              </div>
+
               <img
                 src={`${
                   Object.keys(api).length > 0
@@ -295,18 +296,15 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
                 className="panImg"
                 onClick={() => {
                   setImagePreview({
-                    status:true,
-                    url:`${
+                    status: true,
+                    url: `${
                       Object.keys(api).length > 0
                         ? `${IMAGES_BASE_URL}/${api.shop_image_2}`
                         : window.location.origin + "/images/panCard.svg"
-                    }`
+                    }`,
                   });
                 }}
               />
-            </div>
-            <div className="panCardContainer">
-              {/* <input className="myInputField" disabled /> */}
               <img
                 src={`${
                   Object.keys(api).length > 0
@@ -317,12 +315,12 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
                 className="panImg"
                 onClick={() => {
                   setImagePreview({
-                    status:true,
-                    url:`${
+                    status: true,
+                    url: `${
                       Object.keys(api).length > 0
                         ? `${IMAGES_BASE_URL}/${api.shop_image_3}`
                         : window.location.origin + "/images/panCard.svg"
-                    }`
+                    }`,
                   });
                 }}
               />
@@ -392,12 +390,12 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
                 className="panImg"
                 onClick={() => {
                   setImagePreview({
-                    status:true,
-                    url:`${
+                    status: true,
+                    url: `${
                       Object.keys(api).length > 0
                         ? `${IMAGES_BASE_URL}/${api.aadhar_front_image}`
                         : window.location.origin + "/images/panCard.svg"
-                    }`
+                    }`,
                   });
                 }}
               />
@@ -411,12 +409,12 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
                 className="panImg"
                 onClick={() => {
                   setImagePreview({
-                    status:true,
-                    url:`${
+                    status: true,
+                    url: `${
                       Object.keys(api).length > 0
                         ? `${IMAGES_BASE_URL}/${api.aadhar_back_image}`
                         : window.location.origin + "/images/panCard.svg"
-                    }`
+                    }`,
                   });
                 }}
               />
@@ -469,7 +467,11 @@ export default function MyForm({ setBlur, leadId,setImagePreview }) {
               <div className="redoText">REDO</div>
             </Route>
             <Route exact path="/main">
-              <QcscoreComp2 setBlur={setBlur} qcScore={qcScore} leadId={leadId}/>
+              <QcscoreComp2
+                setBlur={setBlur}
+                qcScore={qcScore}
+                leadId={leadId}
+              />
             </Route>
           </Switch>
         </div>

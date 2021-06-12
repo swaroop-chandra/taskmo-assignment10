@@ -130,7 +130,7 @@ export default function QcscoreComp2({ setBlur, qcScore, leadId }) {
               qcScore < 100 && comment.trim().length>0 ? "activateQcScoreBtn" : ""
             }`}
             disabled={
-              qcScore === 100 || !fakeOnBoarding || comment.trim().length === 0
+              qcScore === 100 || comment.trim().length === 0
             }
             onClick={rejectFunc}
           >
