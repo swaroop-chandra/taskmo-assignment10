@@ -11,7 +11,7 @@ function App() {
   const [blur, setBlur] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [acceptProject, setAcceptProject] = useState(false);
-  
+  const [leadId,setLeadId]=useState(31);
   return (
     <Router>
       <Switch>
@@ -35,7 +35,7 @@ function App() {
               <div className="App">
                 {blur?<QcCheckDone blur={blur} setBlur={setBlur} />:null}
                 <SideBar />
-                <MainContent blur={blur} setBlur={setBlur} />
+                <MainContent blur={blur} setBlur={setBlur} leadId={leadId} />
               </div>
             </Route>
           </>

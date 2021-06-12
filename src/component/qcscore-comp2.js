@@ -1,8 +1,28 @@
 import { useState } from "react";
+import { NINJACART_REDO } from "../utils";
 import "./qcscore-comp2.css";
 export default function QcscoreComp2({ setBlur, qcScore }) {
   const [fakeOnBoarding, setFakeOnBoarding] = useState(false);
   const [comment,setComment]=useState("");
+  const redoFunc=()=>{
+    setBlur(true);
+    console.log("comment",comment);
+    fetch(NINJACART_REDO,{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify({
+        "lead_id": "31",
+        "qc_admin_id": "1",
+        "qc_remark": comment
+    })
+    }).then(r=>r.json()).then((r)=>{
+      console.log(r);
+    }).catch((e)=>{
+      console.log("Error: While Redo ",e);
+    })
+  }
   return (
     <>
       <div className="qcscoreComp2Container">
@@ -12,8 +32,9 @@ export default function QcscoreComp2({ setBlur, qcScore }) {
             className="commentInput"
             placeholder={qcScore === 100 ? "" : "Enter Comment"}
             disabled={qcScore === 100}
-            onChange={(e)=>{setComment(e.target.value)}}
+            onChange={(e)=>{setComment(e.target.value.trim())}}
           />
+          
         </div><div className="fakeOnBoarding">
           <input
             type="checkbox"
@@ -38,6 +59,7 @@ export default function QcscoreComp2({ setBlur, qcScore }) {
               (qcScore < 100) && (!fakeOnBoarding) && !(comment.trim().length===0) ? "activateQcScoreBtn" : ""
             }`}
             disabled={(qcScore === 100) || comment.trim().length===0 ||(fakeOnBoarding)}
+            onClick={redoFunc}
           >
             REDO
           </button>

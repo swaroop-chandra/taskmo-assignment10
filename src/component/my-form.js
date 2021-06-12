@@ -3,9 +3,9 @@ import Chart from "react-apexcharts";
 import QcscoreComp2 from "./qcscore-comp2";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { NINJACART_LEAD_FIELDS_URL,NINJACART_QC_REMARKS_URL } from "../utils";
+import { IMAGES_BASE_URL, NINJACART_LEAD_FIELDS_URL,NINJACART_QC_REMARKS_URL } from "../utils";
 
-export default function MyForm({ setBlur }) {
+export default function MyForm({ setBlur,leadId }) {
   const [mydate,setMyDate]=useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [qcScore, setQcScore] = useState(0);
@@ -24,10 +24,10 @@ export default function MyForm({ setBlur }) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        lead_id: "31",
+        lead_id: leadId,
       }),
     }).then(r=>r.json()).then((r)=>{
-      console.log(r);
+      console.log("resonponse from ninjacart leads",r);
         setApi(r.lead_details);
         const d=new Date(r.lead_details.created_on);
         const day=d.getDate();
@@ -112,7 +112,7 @@ export default function MyForm({ setBlur }) {
           <div className="inputContainer">
             <div>Lead Id</div>
             <div>
-              <input className="myInputField" disabled value={api.lead_id?api.lead_id:"Jio Mart"} />
+              <input className="myInputField" disabled value={Object.keys(api).length>0?api.lead_id:"Jio Mart"} />
             </div>
           </div>
           <div className="inputContainer">
@@ -245,12 +245,12 @@ export default function MyForm({ setBlur }) {
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={`${/*Object.keys(api).length>0?api.shop_image1:*/window.location.origin + "/images/panCard.svg"}`}
-                alt="pan-card"
+                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_1}`:window.location.origin + "/images/panCard.svg"}`}
+                alt="shop_image_1"
                 className="panImg"
               />
               <img
-                src={`${/*Object.keys(api).length>0?api.shop_image2:*/window.location.origin + "/images/panCard.svg"}`}
+                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_2}`:window.location.origin + "/images/panCard.svg"}`}
                 alt="pan-card"
                 className="panImg"
               />
@@ -258,7 +258,7 @@ export default function MyForm({ setBlur }) {
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={`${/*Object.keys(api).length>0?api.shop_image3:*/window.location.origin + "/images/panCard.svg"}`}
+                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.shop_image_3}`:window.location.origin + "/images/panCard.svg"}`}
                 alt="pan-card"
                 className="panImg"
               />
@@ -318,12 +318,12 @@ export default function MyForm({ setBlur }) {
             <div className="panCardContainer">
               {/* <input className="myInputField" disabled /> */}
               <img
-                src={`${/*Object.keys(api).length>0?api.aadhar_front_image:*/window.location.origin + "/images/panCard.svg"}`}
+                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.aadhar_front_image}`:window.location.origin + "/images/panCard.svg"}`}
                 alt="pan-card"
                 className="panImg"
               />
               <img
-                src={`${/*Object.keys(api).length>0?api.aadhar_front_image:*/window.location.origin + "/images/panCard.svg"}`}
+                src={`${Object.keys(api).length>0?`${IMAGES_BASE_URL}/${api.aadhar_back_image}`:window.location.origin + "/images/panCard.svg"}`}
                 alt="pan-card"
                 className="panImg"
               />
@@ -332,7 +332,8 @@ export default function MyForm({ setBlur }) {
 </div>
       </div>
       <div className="right-content">
-        <div className="remark">
+        {remarkApi.length>0?<>
+          <div className="remark">
           
           <div className="remarkIcon">
             <img
@@ -351,8 +352,8 @@ export default function MyForm({ setBlur }) {
           </div>
               </>
           })}
-          
         </div>
+        </>:<></>}
         <div className="qcScore">
           <div className="qcScoreText">QC Score</div>
           <div className="donutStyle">
